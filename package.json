@@ -1,0 +1,26 @@
+{
+  "name": "react-native-rtmp",
+  "version": "0.0.1",
+  "author": "Fitra Aditya <fitra@g.pl>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "keywords": [
+    "react-native",
+    "android",
+    "rtmp"
+  ],
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "dependencies": {
+		"react-native": "0.45.1"
+	}
+}
