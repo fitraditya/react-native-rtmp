@@ -5,12 +5,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git+https://github.com/fitraditya/react-native-rtmp.git"
   },
   "bugs": {
-    "url": ""
+    "url": "https://github.com/fitraditya/react-native-rtmp/issue"
   },
-  "homepage": "",
+  "homepage": "https://github.com/fitraditya/react-native-rtmp",
   "keywords": [
     "react-native",
     "android",
@@ -18,10 +18,10 @@
   ],
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "react": "16.0.0-alpha.12",
-    "react-native": "0.45.1"
+    "react": "^15.3.2",
+    "react-native": "^0.33.0"
   }
 }
