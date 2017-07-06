@@ -6,12 +6,6 @@ import { Dimensions, View, Text, Image, StyleSheet, TouchableOpacity } from 'rea
 import RTMPStreamingView from './RTMPStreamingView'
 
 export default class SampleApp extends Component {
-  static defaultProps = {
-    settingButtonImage: {require('./images/settingButtonImage.png')},
-    switchButtonImage: {require('./images/switchButtonImage.png')},
-    publishButtonImage: {require('./images/publishButtonImage.png')},
-  };
-
   constructor(props) {
     super(props);
   }
@@ -57,7 +51,7 @@ export default class SampleApp extends Component {
 
   renderSwitchButton() {
     return (
-      <TouchableOpacity style={{ paddingHorizontal: 15 }} onPress{()=>this.onSwitchButtonPressed()}>
+      <TouchableOpacity style={{ paddingHorizontal: 15 }} onPress={()=>this.onSwitchButtonPressed()}>
         <Image style={{ flex: 1, justifyContent: 'center' }}
           source={this.props.switchButtonImage}
           resizeMode={Image.resizeMode.contain}/>
