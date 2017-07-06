@@ -32,6 +32,14 @@ export default class SampleApp extends Component {
   }
 
   onSettingButtonPressed() {
+    //
+  }
+
+  onSwitchButtonPressed() {
+    //
+  }
+
+  onPublishButtonPressed() {
     this.publishing = !this.publishing;
     
     if (this.publishing) {
@@ -40,14 +48,6 @@ export default class SampleApp extends Component {
     } else {
       this.stopPublish();
     }
-  }
-
-  onSwitchButtonPressed() {
-    //
-  }
-
-  onPublishButtonPressed() {
-    //
   }
 
   publishButtonState() {
