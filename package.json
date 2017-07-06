@@ -1,27 +1,90 @@
 {
-  "name": "react-native-rtmp",
-  "version": "0.0.1",
-  "author": "Fitra Aditya <fitra@g.pl>",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/fitraditya/react-native-rtmp.git"
+  "_args": [
+    [
+      {
+        "raw": "react-native-rtmp@git+https://github.com/fitraditya/react-native-rtmp.git",
+        "scope": null,
+        "escapedName": "react-native-rtmp",
+        "name": "react-native-rtmp",
+        "rawSpec": "git+https://github.com/fitraditya/react-native-rtmp.git",
+        "spec": "git+https://github.com/fitraditya/react-native-rtmp.git",
+        "type": "hosted",
+        "hosted": {
+          "type": "github",
+          "ssh": "git@github.com:fitraditya/react-native-rtmp.git",
+          "sshUrl": "git+ssh://git@github.com/fitraditya/react-native-rtmp.git",
+          "httpsUrl": "git+https://github.com/fitraditya/react-native-rtmp.git",
+          "gitUrl": "git://github.com/fitraditya/react-native-rtmp.git",
+          "shortcut": "github:fitraditya/react-native-rtmp",
+          "directUrl": "https://raw.githubusercontent.com/fitraditya/react-native-rtmp/master/package.json"
+        }
+      },
+      "/home/fitra/Android/Projects/RNSurfaceViewIssue"
+    ]
+  ],
+  "_from": "git+https://github.com/fitraditya/react-native-rtmp.git",
+  "_id": "react-native-rtmp@0.0.1",
+  "_inCache": true,
+  "_location": "/react-native-rtmp",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "react-native-rtmp@git+https://github.com/fitraditya/react-native-rtmp.git",
+    "scope": null,
+    "escapedName": "react-native-rtmp",
+    "name": "react-native-rtmp",
+    "rawSpec": "git+https://github.com/fitraditya/react-native-rtmp.git",
+    "spec": "git+https://github.com/fitraditya/react-native-rtmp.git",
+    "type": "hosted",
+    "hosted": {
+      "type": "github",
+      "ssh": "git@github.com:fitraditya/react-native-rtmp.git",
+      "sshUrl": "git+ssh://git@github.com/fitraditya/react-native-rtmp.git",
+      "httpsUrl": "git+https://github.com/fitraditya/react-native-rtmp.git",
+      "gitUrl": "git://github.com/fitraditya/react-native-rtmp.git",
+      "shortcut": "github:fitraditya/react-native-rtmp",
+      "directUrl": "https://raw.githubusercontent.com/fitraditya/react-native-rtmp/master/package.json"
+    }
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "git+https://github.com/fitraditya/react-native-rtmp.git#d4da8dad3240de80021ec4601ce9435cfe7d974e",
+  "_shasum": "0bd1f68fd966746191694277ee09e493540ba3ca",
+  "_shrinkwrap": null,
+  "_spec": "react-native-rtmp@git+https://github.com/fitraditya/react-native-rtmp.git",
+  "_where": "/home/fitra/Android/Projects/RNSurfaceViewIssue",
+  "author": {
+    "name": "Fitra Aditya",
+    "email": "fitra@g.pl"
   },
   "bugs": {
     "url": "https://github.com/fitraditya/react-native-rtmp/issue"
   },
+  "dependencies": {
+    "react": "^15.3.2",
+    "react-native": "^0.33.0"
+  },
+  "description": "",
+  "devDependencies": {},
+  "gitHead": "d4da8dad3240de80021ec4601ce9435cfe7d974e",
   "homepage": "https://github.com/fitraditya/react-native-rtmp",
   "keywords": [
     "react-native",
     "android",
     "rtmp"
   ],
+  "license": "MIT",
+  "name": "react-native-rtmp",
+  "optionalDependencies": {},
+  "readme": "## React Native Android RTMP Library\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fitraditya/react-native-rtmp.git"
+  },
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "react": "^15.3.2",
-    "react-native": "^0.33.0"
-  }
+  "version": "0.0.1"
 }
