@@ -1,17 +1,45 @@
 // index.js
 
 import React, { Component, PropTypes } from 'react'
-import { Dimensions, View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
+import { NativeModules, Dimensions, View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
 
 import RTMPStreamingView from './RTMPStreamingView'
 
+const NativeRTMPModule = NativeModules.RTMPModule;
+
 export default class SampleApp extends Component {
+  static propTypes = {
+    rtmpUrl: PropTypes.string,
+  };
+
+  static defaultProps = {
+    rtmpUrl: "rtmp://rtc.qiscus.com/live360p/demo",
+  };
+
   constructor(props) {
     super(props);
+    this.publishing = false;
+  }
+
+  async startPublish(rtmpUrl = "rtmp://rtc.qiscus.com/live360p/demo") {
+		const success = await RTMPModule.startPublish(rtmpUrl);
+		return success;
+  }
+
+  async stopPublish(r) {
+		const success = await RTMPModule.stopPublish();
+		return success;
   }
 
   onSettingButtonPressed() {
-    //
+    this.publishing = !this.publishing;
+    
+    if (this.publishing) {
+      const rtmpURL = this.props.rtmpURL;
+      this.startPublish(rtmpURL);
+    } else {
+      this.stopPublish();
+    }
   }
 
   onSwitchButtonPressed() {
@@ -20,6 +48,14 @@ export default class SampleApp extends Component {
 
   onPublishButtonPressed() {
     //
+  }
+
+  publishButtonState() {
+    if (this.publishing) {
+      return 'Stop';
+    } else {
+      return 'Start';
+    }
   }
 
   renderTopButtons() {
@@ -66,6 +102,9 @@ export default class SampleApp extends Component {
           <Image style={styles.publishButton}
             source={this.props.publishButtonImage}
             resizeMode={'contain'}>
+            <Text style={styles.publishButtonText}>
+              {this.publishButtonState()}
+            </Text>
           </Image>
         </TouchableOpacity>
       </View >
@@ -118,6 +157,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  publishButtonText: {
+    justifyContent: 'center',
+    color: 'black',
+    backgroundColor: 'transparent'
   },
   publishButton: {
     flex: 1,
