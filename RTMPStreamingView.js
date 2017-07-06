@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { requireNativeComponent, View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native'
+import { requireNativeComponent, View, StyleSheet } from 'react-native'
 
 var iface = {
   name: 'RTMPStreamingView',
