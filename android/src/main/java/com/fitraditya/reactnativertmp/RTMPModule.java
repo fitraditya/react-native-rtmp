@@ -1,6 +1,5 @@
 package com.fitraditya.reactnativertmp;
 
-import android.view.SurfaceHolder;
 import android.widget.Toast;
 
 import com.facebook.react.bridge.Promise;
@@ -14,18 +13,13 @@ import net.ossrs.rtmp.ConnectCheckerRtmp;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RTMPModule extends ReactContextBaseJavaModule implements SurfaceHolder.Callback, ConnectCheckerRtmp {
-    private RTMPSurfaceView surfaceView;
-    private SurfaceHolder surfaceHolder;
-    private RtmpBuilder rtmpBuilder;
-    private boolean isSurfaceCreated;
+public class RTMPModule extends ReactContextBaseJavaModule {
+    private static RTMPSurfaceView surfaceView;
+    private static RtmpBuilder rtmpBuilder;
+    private static boolean isSurfaceCreated;
 
     public RTMPModule(ReactApplicationContext reactContext) {
         super(reactContext);
-        surfaceView = RTMPStreamingViewManager.getSurfaceView();
-        surfaceHolder = surfaceView.getHolder();
-        surfaceHolder.addCallback(this);
-        rtmpBuilder = new RtmpBuilder(surfaceView, this);
     }
 
     @Override
@@ -63,54 +57,49 @@ public class RTMPModule extends ReactContextBaseJavaModule implements SurfaceHol
     public void stopStream(Promise promise) {
         if (rtmpBuilder != null && rtmpBuilder.isStreaming()) {
             rtmpBuilder.stopStream();
-            rtmpBuilder = null;
         }
 
         promise.resolve(!rtmpBuilder.isStreaming());
     }
 
-    @Override
-    public void surfaceCreated(SurfaceHolder holder) {
+    public static void setSurfaceView(RTMPSurfaceView surface) {
+        surfaceView = surface;
+        rtmpBuilder = new RtmpBuilder(surfaceView, new ConnectCheckerRtmp() {
+            @Override
+            public void onConnectionSuccessRtmp() {
+
+            }
+
+            @Override
+            public void onConnectionFailedRtmp() {
+
+            }
+
+            @Override
+            public void onDisconnectRtmp() {
+
+            }
+
+            @Override
+            public void onAuthErrorRtmp() {
+
+            }
+
+            @Override
+            public void onAuthSuccessRtmp() {
+
+            }
+        });
+
         isSurfaceCreated = true;
     }
 
-    @Override
-    public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-
-    }
-
-    @Override
-    public void surfaceDestroyed(SurfaceHolder holder) {
+    public static void destroySurfaceView() {
         if (rtmpBuilder != null && rtmpBuilder.isStreaming()) {
             rtmpBuilder.stopStream();
             rtmpBuilder = null;
         }
 
         isSurfaceCreated = false;
-    }
-
-    @Override
-    public void onConnectionSuccessRtmp() {
-
-    }
-
-    @Override
-    public void onConnectionFailedRtmp() {
-
-    }
-
-    @Override
-    public void onDisconnectRtmp() {
-
-    }
-
-    @Override
-    public void onAuthErrorRtmp() {
-
-    }
-
-    @Override
-    public void onAuthSuccessRtmp() {
-
     }
 }

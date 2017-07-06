@@ -12,8 +12,9 @@ import com.facebook.react.uimanager.ThemedReactContext;
  * Created by fitra on 06/07/17.
  */
 
-public class RTMPStreamingViewManager extends SimpleViewManager<View> {
-    private static RTMPSurfaceView surfaceView;
+public class RTMPStreamingViewManager extends SimpleViewManager<View> implements SurfaceHolder.Callback {
+    private RTMPSurfaceView surfaceView;
+    private SurfaceHolder surfaceHolder;
 
     @Override
     public String getName() {
@@ -23,10 +24,23 @@ public class RTMPStreamingViewManager extends SimpleViewManager<View> {
     @Override
     protected View createViewInstance(ThemedReactContext reactContext) {
         surfaceView = new RTMPSurfaceView(reactContext);
+        surfaceHolder = surfaceView.getHolder();
+        surfaceHolder.addCallback(this);
         return surfaceView;
     }
 
-    public static RTMPSurfaceView getSurfaceView() {
-        return surfaceView;
+    @Override
+    public void surfaceCreated(SurfaceHolder holder) {
+        RTMPModule.setSurfaceView(surfaceView);
+    }
+
+    @Override
+    public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+
+    }
+
+    @Override
+    public void surfaceDestroyed(SurfaceHolder holder) {
+        RTMPModule.destroySurfaceView();
     }
 }

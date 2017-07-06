@@ -19,15 +19,18 @@ export default class SampleApp extends Component {
   constructor(props) {
     super(props);
     this.publishing = false;
+    this.state = {
+       publishButtonState: 'Start'
+    }
   }
 
   async startPublish(rtmpUrl = "rtmp://rtc.qiscus.com/live360p/demo") {
-		const success = await RTMPModule.startPublish(rtmpUrl);
+		const success = await NativeRTMPModule.startStream(rtmpUrl);
 		return success;
   }
 
   async stopPublish(r) {
-		const success = await RTMPModule.stopPublish();
+		const success = await NativeRTMPModule.stopStream();
 		return success;
   }
 
@@ -41,6 +44,7 @@ export default class SampleApp extends Component {
 
   onPublishButtonPressed() {
     this.publishing = !this.publishing;
+    this.setPublishButtonState();
     
     if (this.publishing) {
       const rtmpURL = this.props.rtmpURL;
@@ -50,11 +54,11 @@ export default class SampleApp extends Component {
     }
   }
 
-  publishButtonState() {
+  setPublishButtonState() {
     if (this.publishing) {
-      return 'Stop';
+      this.setState({publishButtonState: 'Stop'})
     } else {
-      return 'Start';
+      this.setState({publishButtonState: 'Start'})
     }
   }
 
@@ -79,7 +83,7 @@ export default class SampleApp extends Component {
     return (
       <TouchableOpacity style={{ paddingHorizontal: 15 }} onPress={()=>this.onSettingButtonPressed()}>
         <Image style={{ flex: 1, justifyContent: 'center' }}
-          source={this.prop.settingButtonImage}
+          source={this.props.settingButtonImage}
           resizeMode={Image.resizeMode.contain}/>
       </TouchableOpacity>
     )
@@ -103,7 +107,7 @@ export default class SampleApp extends Component {
             source={this.props.publishButtonImage}
             resizeMode={'contain'}>
             <Text style={styles.publishButtonText}>
-              {this.publishButtonState()}
+              {this.state.publishButtonState}
             </Text>
           </Image>
         </TouchableOpacity>
