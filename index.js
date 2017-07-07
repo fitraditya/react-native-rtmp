@@ -8,14 +8,6 @@ import RTMPStreamingView from './RTMPStreamingView'
 const NativeRTMPModule = NativeModules.RTMPModule;
 
 export default class SampleApp extends Component {
-  static propTypes = {
-    rtmpUrl: PropTypes.string,
-  };
-
-  static defaultProps = {
-    rtmpUrl: "rtmp://rtc.qiscus.com/live360p/demo",
-  };
-
   constructor(props) {
     super(props);
     this.publishing = false;
@@ -24,12 +16,12 @@ export default class SampleApp extends Component {
     }
   }
 
-  async startPublish(rtmpUrl = "rtmp://rtc.qiscus.com/live360p/demo") {
+  async startPublish(rtmpUrl) {
 		const success = await NativeRTMPModule.startStream(rtmpUrl);
 		return success;
   }
 
-  async stopPublish(r) {
+  async stopPublish() {
 		const success = await NativeRTMPModule.stopStream();
 		return success;
   }
