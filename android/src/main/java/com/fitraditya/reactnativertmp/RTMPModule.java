@@ -62,6 +62,15 @@ public class RTMPModule extends ReactContextBaseJavaModule {
         promise.resolve(!rtmpBuilder.isStreaming());
     }
 
+    @ReactMethod
+    public void switchCamera(Promise promise) {
+        if (rtmpBuilder != null && rtmpBuilder.isStreaming()) {
+            rtmpBuilder.switchCamera();
+        }
+
+        promise.resolve(rtmpBuilder.isStreaming());
+    }
+
     public static void setSurfaceView(RTMPSurfaceView surface) {
         surfaceView = surface;
         rtmpBuilder = new RtmpBuilder(surfaceView, new ConnectCheckerRtmp() {
